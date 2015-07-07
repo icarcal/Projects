@@ -37,7 +37,7 @@ gulp.task('jasminecoffee',  ['clean'], function(){
 		.pipe(gulp.dest(filesdest.jasmine));
 });
 
-gulp.task('coffee', ['jasminecoffee'], function(){
+gulp.task('coffee', ['clean'], function(){
 	return gulp.src(files.commonjscoffee)
 		.pipe(coffee({bare:true}).on('error', gutil.log))
 		.pipe(gulp.dest(filesdest.commonjs));
@@ -46,8 +46,20 @@ gulp.task('coffee', ['jasminecoffee'], function(){
 gulp.task('tests', ['jasminecoffee', 'coffee'], function(){
 	return gulp.src(files.jasmine)
 		.pipe(jasmine());
-})
+});
 
-gulp.task('build', ['clean', 'jasminecoffee', 'coffee', 'tests']);
+gulp.task('minify', ['tests'], function(){
+	gulp.src(filesdestclean[0]).pipe(rename({suffix: '.min'})).pipe(uglify());
+	gulp.src(filesdestclean[1]).pipe(rename({suffix: '.min'})).pipe(uglify());
+	gulp.src(filesdestclean[2]).pipe(rename({suffix: '.min'})).pipe(uglify());
+});
+
+gulp.task('watch', function(){
+	gulp.watch(files.jasminecoffee, ['jasminecoffee', 'tests']);
+	gulp.watch(files.commonjscoffee, ['coffee', 'tests']);
+	gulp.watch(files.stylus, ['stylus']);
+});
+
+gulp.task('build', ['watch', 'clean', 'jasminecoffee', 'coffee', 'tests']);
 
 gulp.task('default', ['build']);
