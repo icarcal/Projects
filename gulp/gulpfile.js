@@ -60,6 +60,6 @@ gulp.task('watch', function(){
 	gulp.watch(files.stylus, ['stylus']);
 });
 
-gulp.task('build', ['watch', 'clean', 'jasminecoffee', 'coffee', 'tests']);
+gulp.task('build', ['watch', 'clean', 'jasminecoffee', 'coffee', 'tests', 'minify']);
 
 gulp.task('default', ['build']);
