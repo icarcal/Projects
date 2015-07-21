@@ -49,9 +49,15 @@ gulp.task('tests', ['jasminecoffee', 'coffee'], function(){
 });
 
 gulp.task('minify', ['tests'], function(){
-	gulp.src(filesdestclean[0]).pipe(rename({suffix: '.min'})).pipe(uglify());
-	gulp.src(filesdestclean[1]).pipe(rename({suffix: '.min'})).pipe(uglify());
-	gulp.src(filesdestclean[2]).pipe(rename({suffix: '.min'})).pipe(uglify());
+	gulp.src(filesdestclean[0]).pipe(uglify())
+							   .pipe(rename({suffix: '.min'}))
+							   .pipe(gulp.dest(filesdestclean[0].replace('*.js','')));
+	gulp.src(filesdestclean[1]).pipe(uglify())
+							   .pipe(rename({suffix: '.min'}))
+							   .pipe(gulp.dest(filesdestclean[1].replace('*.js','')));
+	gulp.src(filesdestclean[2]).pipe(uglify())
+							   .pipe(rename({suffix: '.min'}))
+							   .pipe(gulp.dest(filesdestclean[2].replace('*.js','')));
 });
 
 gulp.task('watch', function(){
