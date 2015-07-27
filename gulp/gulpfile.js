@@ -49,15 +49,11 @@ gulp.task('tests', ['jasminecoffee', 'coffee'], function(){
 });
 
 gulp.task('minify', ['tests'], function(){
-	gulp.src(filesdestclean[0]).pipe(uglify())
+	filesdestclean.forEach(function(value, index, ar){
+		gulp.src(value).pipe(uglify())
 							   .pipe(rename({suffix: '.min'}))
-							   .pipe(gulp.dest(filesdestclean[0].replace('*.js','')));
-	gulp.src(filesdestclean[1]).pipe(uglify())
-							   .pipe(rename({suffix: '.min'}))
-							   .pipe(gulp.dest(filesdestclean[1].replace('*.js','')));
-	gulp.src(filesdestclean[2]).pipe(uglify())
-							   .pipe(rename({suffix: '.min'}))
-							   .pipe(gulp.dest(filesdestclean[2].replace('*.js','')));
+							   .pipe(gulp.dest(value.replace(/\*\.js|\*\.css/g,'')));	
+	});
 });
 
 gulp.task('watch', function(){
