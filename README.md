@@ -1,15 +1,27 @@
-# Jasmine, Coffee and Gulp
+#This is my testing repo.
+###Fell free to take a look :D
 
-This is my testing repo.
-Fell free to take a look :D
-### Version
-1.0.0
+##Gulp
+
+* learning [Gulp], [Node.js], [Jasmine] and [CoffeeScript] only in one project :D
+
+##Javascript
+
+* examples from Javascript Guide book
+
+##Javascripting
+
+* Javascripting course from [nodeschool.io]
+
+##Learn you node
+
+* learnyounode course from [nodeschool.io]
 
 ### Tech
 
-This project has the following dependencies:
+These projects has the following dependencies:
 
-* [node.js] - evented I/O for the backend
+* [Node.js] - evented I/O for the backend
 * [Gulp] - the streaming build system
 * [Jasmine] - BDD testing framework
 * [CoffeeScript] - A little language that compiles into JavaScript
@@ -20,7 +32,8 @@ License
 
 MIT
 
-[node.js]:http://nodejs.org
+[Node.js]:http://nodejs.org
 [Gulp]:http://gulpjs.com
 [Jasmine]:http://jasmine.github.io/
 [CoffeeScript]: http://coffeescript.org/
+[nodeschool.io]: http://nodeschool.io/
