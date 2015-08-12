@@ -1,5 +1,6 @@
 function logger(namespace){
-	return Function.prototype.apply(console.log, 'LOG:');
+	//var slice = Array.prototype.slice.call(arguments)
+	return Function.apply( null , new Array(namespace) );
 }
 
 module.exports = logger;
