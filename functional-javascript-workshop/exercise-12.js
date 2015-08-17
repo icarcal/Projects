@@ -1,6 +1,14 @@
 function Spy(target, method) {
-	this.count+=1;
-	return Function.prototype.call(target[method]);
+	var ret = { count: 0 };
+	var originalMethod = target[method];
+
+	target[method] = function (){
+		var returnOriginal = originalMethod.apply(this, arguments);
+		ret.count++;
+		return returnOriginal;
+	}
+
+	return ret;
 }
 
-module.exports = Spy
+module.exports = Spy;
